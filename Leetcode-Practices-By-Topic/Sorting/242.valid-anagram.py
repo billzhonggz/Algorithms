@@ -39,18 +39,38 @@
 # 
 #
 class Solution:
+    """
+    # First attempt: sort two strings in alphabetical order,
+    # then compare them. If they are the same, return true,
+    # otherwise, return false.
+    # √ Accepted
+    # √ 34/34 cases passed (68 ms)
+    # √ Your runtime beats 38.45 % of python3 submissions
+    # √ Your memory usage beats 6.25 % of python3 submissions (14.4 MB)
+    # View https://github.com/python/cpython/blob/master/Python/bltinmodule.c#L2185 for implementation of `sorted()` function.
     def isAnagram(self, s: str, t: str) -> bool:
-        # First attempt: sort two strings in alphabetical order,
-        # then compare them. If they are the same, return true,
-        # otherwise, return false.
-        # √ Accepted
-        # √ 34/34 cases passed (68 ms)
-        # √ Your runtime beats 38.45 % of python3 submissions
-        # √ Your memory usage beats 6.25 % of python3 submissions (14.4 MB)
         s = ''.join(sorted(s))
         t = ''.join(sorted(t))
         if s == t:
             return True
         else:
             return False
+    """       
+    # Second attempt: dictionary-based (hashmap) solution
+    # For `sorted()` function in Python, it handles sorting in a list level.
+    # In this kind of cases, switching to hashmap worth to try.
+    # Assigning the strings to two dictionaries as their keys,
+    # and keep the value as 1.
+    # Compare two dictionaries can be finished in O(1).
+    def isAnagram(self, s: str, t: str) -> bool:
+        dict1 = {}
+        dict2 = {}
+        for item in s:
+            dict1[item] = dict1.get(item, 0) + 1
+        for item in t:
+            dict2[item] = dict2.get(item, 0) + 1
+        return dict1 == dict2
 
+if __name__ == '__main__':
+    sol = Solution
+    sol.isAnagram(sol, 'hello','olleh')
