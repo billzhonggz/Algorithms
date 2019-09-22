@@ -49,27 +49,21 @@
 class Solution:
     def sortArrayByParityII(self, A):
         # First attempt: brute-force
-        output = [0] * len(A)
+        # Possible solution: two pass. For any odd/even problem, solutions
+        # on two-step can be considered.
+        output = []
         for i in range(0, len(A)):
             if i % 2 == 0:
                 for item in A:
                     if item % 2 == 0:
-                        output[i] = item
+                        output.append(item)
                         A.remove(item)
-                    else:
-                        continue
-            elif i % 2 != 0:
+                        break
+            else:
                 for item in A:
                     if item % 2 != 0:
-                        output[i] = item
+                        output.append(item)
                         A.remove(item)
-                    else:
-                        continue
-            else:
-                continue
+                        break
         return output
-
-if __name__ == '__main__':
-    a = Solution
-    print(a.sortArrayByParityII(a, [4,1,2,1]))
 
