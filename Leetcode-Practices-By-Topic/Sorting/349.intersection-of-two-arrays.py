@@ -42,6 +42,7 @@
 #
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        """
         # First attempt: brute-force method.
         dictionary = {}
         for item1 in nums1:
@@ -54,4 +55,6 @@ class Solution:
                 else:
                     continue
         return list(dictionary.keys())
+        """
+        # Second attempt: 
 
